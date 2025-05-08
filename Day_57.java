@@ -43,7 +43,10 @@ Output: 3
 
   */
 
-  int n = moveTime.length, m = moveTime[0].length;
-int[][] dp = new int[n][m];
-for (int[] row : dp) Arrays.fill(row, Integer.MAX_VALUE);
-PriorityQueue<int[]> minh = new PriorityQueue<>(Comparator.comparingInt(a -> a[0]));
+  while (!minh.isEmpty()) {
+    int[] current = minh.poll();
+    int currTime = current[0];
+    int currRow = current[1];
+    int currCol = current[2];
+    if (currTime >= dp[currRow][currCol]) continue;
+    dp[currRow][currCol] = currTime;
